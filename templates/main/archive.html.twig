@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Архив новостей{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        {% for post in posts %}
+            <div class="row border rounded border-dark p-2 mb-2">
+                <h1 class="display-6 fw-normal">{{ post.name|e }}</h1>
+                <p class="lead fw-normal">{{ post.annotation|e }}</p>
+                <a class="btn btn-outline-danger" href="{{ path('posts', {id: post.id|e})}}">Открыть пост</a>
+                <div class="row mt-1">
+                    <div class="col-sm-3 font-monospace">{{ post.date|date }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
